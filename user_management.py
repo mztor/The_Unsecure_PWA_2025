@@ -17,12 +17,18 @@ def insertUser(username, password, DoB):
 def retrieveUsers(username, password):
     con = sql.connect("database_files/database.db")
     cur = con.cursor()
-    cur.execute(f"SELECT * FROM users WHERE username = ?",username)
+    #parameterised
+#    cur.execute(f"SELECT * FROM users WHERE username = (?)",(username,))
+    #original
+    cur.execute(f"SELECT * FROM users WHERE username = '{username}'")
     if cur.fetchone() == None:
         con.close()
         return False
     else:
-        cur.execute(f"SELECT * FROM users WHERE password = ?",password)
+        #parameterised:
+        #cur.execute(f"SELECT * FROM users WHERE password = (?)",(password,))
+        #original
+        cur.execute(f"SELECT * FROM users WHERE password = '{password}'")
         # Plain text log of visitor count as requested by Unsecure PWA management
         with open("visitor_log.txt", "r") as file:
             number = int(file.read().strip())

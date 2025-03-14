@@ -12,7 +12,7 @@ my_password = "I Am All The Jedi"
 my_encoded_password = my_password.encode()
 
 # Salt to add to password before Hashing
-salt = b"$2b$12$ieYNkQp8QumgedUo30nuPO"
+salt = bcrypt.gensalt()
 
 # Hashed Password
 hashed_password = bcrypt.hashpw(password=my_encoded_password, salt=salt)
