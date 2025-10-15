@@ -3,6 +3,8 @@ from flask import render_template
 from flask import request
 from flask import redirect
 import user_management as dbHandler
+import bcrypt
+import data_handler as sanitiser
 
 # Code snippet for logging a message
 # app.logger.critical("message")
@@ -34,7 +36,12 @@ def signup():
         username = request.form["username"]
         password = request.form["password"]
         DoB = request.form["dob"]
-        dbHandler.insertUser(username, password, DoB)
+
+        # encrypt the password using bcrypt
+        pw = password.encode()
+        salt = bcrypt.gensalt()
+        hash = bcrypt.hashpw(pw, salt)
+        dbHandler.insertUser(username, hash, DoB, salt)
         return render_template("/index.html")
     else:
         return render_template("/signup.html")

@@ -61,7 +61,6 @@ def replace_characters(input_string: str) -> str:
         if char_list[i] in to_replace:
             index = to_replace.index(char_list[i])
             char_list[i] = replacements[index]
-    return char_list
 
 
 # Function to sanitise text using a library
