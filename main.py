@@ -3,8 +3,6 @@ from flask import render_template
 from flask import request
 from flask import redirect
 import user_management as dbHandler
-import bcrypt
-import data_handler as sanitiser
 
 # Code snippet for logging a message
 # app.logger.critical("message")

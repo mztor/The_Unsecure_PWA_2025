@@ -6,7 +6,6 @@
 ##############################################
 import re
 import html
-import bcrypt
 
 
 # A simple password check function that checks if the password is valid
