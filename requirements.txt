@@ -5,4 +5,3 @@ Flask-WTF
 Flask-Limiter
 qrcode
 pyotp
-gunicorn
